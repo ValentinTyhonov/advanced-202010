@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lesson-3-servlets</artifactId>
+    <artifactId>lesson-4-project</artifactId>
     <packaging>war</packaging>
 
-    <name>lesson-3-servlets Maven Webapp</name>
+    <name>lesson-4-project Maven Webapp</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -21,14 +21,19 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <dependencies>
+
+    </dependencies>
+
     <build>
-        <finalName>lesson-3-servlets</finalName>
-        <pluginManagement>
+        <finalName>lesson-4-project</finalName>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.1.0</version>
                 </plugin>
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.0.2</version>

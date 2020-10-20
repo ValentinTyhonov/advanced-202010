@@ -8,9 +8,10 @@
   <artifactId>advanced-202010</artifactId>
   <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>lesson-1-jdbc</module>
+      <module>lesson-1-jdbc</module>
       <module>lesson-2-logging</module>
-        <module>lesson-3-servlets</module>
+      <module>lesson-3-servlets</module>
+      <module>lesson-4-test</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -41,6 +42,36 @@
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
     </dependency>
 
     <dependency>
