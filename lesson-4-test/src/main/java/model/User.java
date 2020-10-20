@@ -8,8 +8,8 @@ import util.RandomIdGenerator;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
+public class User
+{
     private Integer id;
     private String email;
     private String password;
@@ -17,7 +17,8 @@ public class User {
     private String lastName;
     private String role;
 
-    public User(String email, String password, String firstName, String lastName, String role) {
+    public User(String email, String password, String firstName, String lastName, String role)
+    {
         this.id = RandomIdGenerator.getRandomID();
         this.email = email;
         this.password = password;
