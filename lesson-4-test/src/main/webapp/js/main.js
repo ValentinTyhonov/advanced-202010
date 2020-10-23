@@ -27,8 +27,9 @@ $(document).ready(function () {
             };
             $.post("registration", userRegistration, function (data) {
                 if (data == 'Success') {
-                    $("form")[0].reset();
+                    window.location.href = "cabinet.jsp";
                 }
+                $("form")[0].reset();
             });
         }
     });
@@ -48,24 +49,30 @@ $(document).ready(function () {
                 email: email,
                 password: password
             };
+
             $.post("login", user, function (data) {
-                if (data != '') {
-                    let finalUrl = '';
-                    let url = window.location.href.split('/');
-                    for (let i = 0; i < url.length-1 ; i++) {
-                        finalUrl += url[i] + '/';
-                    }
-                    finalUrl += data.destinationUrl;
-                    window.location.href = finalUrl;
+                if (data == "Success") {
+                    window.location.href = "cabinet.jsp";
+                } else {
+                    $("form")[0].reset();
+                    alert(data);
                 }
-                $("form")[1].reset();
             });
         }
     });
 });
 
-
-
+$(document).ready(function () {
+    $("button#logout").click(function () {
+        $.post("logout", {}, function (data) {
+            if (data == "Success") {
+                window.location.href = "index.jsp";
+            } else {
+                alert(data);
+            }
+        });
+    });
+});
 
 
 

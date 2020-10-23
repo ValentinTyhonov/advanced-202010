@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.Objects;
 
 @Log4j
@@ -38,19 +39,21 @@ public class RegistrationServlet extends HttpServlet
             String firstName = req.getParameter("firstName");
             String lastName = req.getParameter("lastName");
             String password = req.getParameter("password");
-            String confirmPassword = req.getParameter("confirmPassword");
 
-            if (!email.isEmpty() && !password.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty() && password.equals(confirmPassword))
+            User user = new User(email, password, firstName, lastName, "user");
+            userService.create(user);
+            log.info("User was registered : " + user);
+
+            HttpSession session = req.getSession(true);
+            session.setAttribute("userName", firstName);
+            session.setAttribute("userEmail", email);
+
+            resp.setContentType("text/plain");
+            resp.setCharacterEncoding("UTF-8");
+
+            try (PrintWriter writer = resp.getWriter())
             {
-                User user = new User(email, password, firstName, lastName, "user");
-                userService.create(user);
-                log.info("User was registered : " + user);
-
-                HttpSession session = req.getSession(true);
-                session.setAttribute("userName", firstName);
-                session.setAttribute("userEmail", email);
-
-                req.getRequestDispatcher("cabinet.jsp").forward(req, resp);
+                writer.write("Success");
             }
         } else
         {
