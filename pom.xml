@@ -12,7 +12,6 @@
       <module>lesson-2-logging</module>
       <module>lesson-3-servlets</module>
       <module>lesson-4-test</module>
-      <module>lesson-5-test</module>
     </modules>
     <packaging>pom</packaging>
 
