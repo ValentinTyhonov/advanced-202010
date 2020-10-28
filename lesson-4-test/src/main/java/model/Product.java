@@ -14,7 +14,6 @@ public class Product
     private String name;
     private String description;
     private double price;
-    private int bucketId;
 
     public Product(String name, String description, double price)
     {

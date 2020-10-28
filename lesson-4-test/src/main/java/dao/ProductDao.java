@@ -1,21 +1,13 @@
 package dao;
 
+import exception.AlreadyExistException;
+import exception.NotFoundException;
 import model.Product;
+import shared.AbstractCrudOperations;
 
 import java.sql.SQLException;
-import java.util.List;
 
-public interface ProductDao
-{
-    List<Product> readAll() throws SQLException;
+public interface ProductDao extends AbstractCrudOperations<Product> {
 
-    Product read(int id) throws SQLException;
-
-    void create(Product product) throws SQLException;
-
-    void delete(int id) throws SQLException;
-
-    void update(int id, Product current) throws SQLException;
-
-    boolean exists(int id) throws SQLException;
+    void update(int id, Product current) throws SQLException, AlreadyExistException, NotFoundException;
 }

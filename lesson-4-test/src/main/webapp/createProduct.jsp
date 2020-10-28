@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>Cabinet</title>
+    <title>Create Product</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"
@@ -15,16 +15,15 @@
 </head>
 <body>
 
-<div class="login-page">
-    <h3>Welcome user : ${userName} <b> (${userEmail}) </b></h3>
-
-    <button type="button" id="logout">Logout</button>
-    <a href="createProduct.jsp">Create Product</a>
-
-    <h3>All products:</h3>
-    <div id="all-products"></div>
-
-
+<div class="create-product-page">
+    <div class="form">
+        <form class="create-product-form">
+            <input class="name" name="name" type="text" placeholder="name"/>
+            <input class="price" name="price" type="number" placeholder="price"/>
+            <input class="description" name="description" type="text" placeholder="description"/>
+            <button type="button" id="create">Create</button>
+        </form>
+    </div>
 </div>
 
 <jsp:include page="footer.jsp"></jsp:include>
@@ -45,7 +44,6 @@
 <script
         src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-<script src="js/main.js"></script>
-<script src="js/cabinet.js"></script>
+<script src="js/createProduct.js"></script>
 </body>
 </html>
