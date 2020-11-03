@@ -6,12 +6,9 @@
 
   <groupId>org.logos</groupId>
   <artifactId>advanced-202010</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1.2-SNAPSHOT</version>
     <modules>
-      <module>lesson-1-jdbc</module>
-      <module>lesson-2-logging</module>
-      <module>lesson-3-servlets</module>
-      <module>lesson-4-test</module>
+        <module>lesson-1-jpa</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -82,6 +79,9 @@
     </dependency>
 
   </dependencies>
+
+
+
 
   <build>
     <finalName>advanced-202010</finalName>
