@@ -31,10 +31,10 @@ public class ProductServlet extends HttpServlet {
         productService = new ProductServiceImpl();
     }
 
-
-
     @SneakyThrows
     @Override
+
+    //Створення продукту
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         try {
@@ -60,6 +60,37 @@ public class ProductServlet extends HttpServlet {
                 writer.write("{ \"message\" : \"" + e.getMessage() + "\"");
             }
         }
-
     }
+
+
+// Оновлення продукту по нажатті на кнопку Update product під певним продуктом
+    @SneakyThrows
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        int id = Integer.parseInt(req.getParameter("id"));
+        boolean update = Boolean.parseBoolean(req.getParameter("update"));
+
+        if (update==true) {
+            Product product = productService.read(id);
+
+            req.setAttribute("id", product.getId());
+            req.setAttribute("name", product.getName());
+            req.setAttribute("price", product.getPrice());
+            req.setAttribute("description", product.getDescription());
+
+
+            req.getRequestDispatcher("updateProduct.jsp").forward(req, resp);
+
+
+        }
+
+        boolean delete = Boolean.parseBoolean((req.getParameter("delete")));
+
+        if(delete==true){
+            productService.delete(id);
+            req.getRequestDispatcher("cabinet.jsp").forward(req, resp);
+        }
+    }
+
 }

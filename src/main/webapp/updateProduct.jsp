@@ -27,10 +27,10 @@
     <div class="update-product-page">
         <div class="form">
         <form class="update-product-page">
-            <input class="id" name="id" type="number" placeholder="id"/>
-            <input class="name" name="name" type="text" placeholder="name"/>
-            <input class="price" name="price" type="number" placeholder="price"/>
-            <input class="description" name="description" type="text" placeholder="description"/>
+            <input class="id" name="id" type="number" value="<%= request.getAttribute("id")%>"/>
+            <input class="name" name="name" type="text" value="<%= request.getAttribute("name")%>"/>
+            <input class="price" name="price" type="number" value="<%= request.getAttribute("price")%>"/>
+            <input class="description" name="description" type="text" value="<%= request.getAttribute("description")%>"/>
             <button type="button" id="update">Update</button>
         </form>
         </div>

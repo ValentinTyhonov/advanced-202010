@@ -43,9 +43,9 @@
 
     <a href="createProduct.jsp">Create Product</a>
 
-    <a href="updateProduct.jsp">Update Product</a>
+<%--    <a href="updateProduct.jsp">Update Product</a>--%>
 
-    <a href="existsProductId.jsp">Exists Id Product</a>
+<%--    <a href="existsProductId.jsp">Exists Id Product</a>--%>
 
     <h3>All products</h3>
     <div id="all-products"></div>

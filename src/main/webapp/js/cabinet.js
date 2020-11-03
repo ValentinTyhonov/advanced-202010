@@ -14,9 +14,9 @@ $.get("products", function (data) {
             "<h6 class='card-subtitle mb-2 text-muted'> Price : " + product.price + "</h6>" +
             "<p class='card-text'>Description : " + product.description + "</p>" +
             "<p class='card-text'>Id product : " + product.id + "</p>" +
-            "<a href='product?id=" + product.id + "'class='card-link'>About product</a>" +
-            "<a href='product?id=" + product.id + "'class='card-link'>Update Product</a>" +
-
+            "<a href='product?about=true&id=" + product.id + "'class='card-link'>About product</a>" +
+            "<a href='product?update=true&id=" + product.id + "'class='card-link'>Update Product</a>" +
+            "<a href='product?delete=true&id=" + product.id + "'class='card-link'>Delete Product</a>" +
             "</div>" +
             "</div>"
     });
