@@ -11,13 +11,15 @@ import java.util.List;
 
 public class Main
 {
-    public static void main(String[] args) throws SQLException, AlreadyExistException
+    public static void main(String[] args) throws SQLException, AlreadyExistException, NotFoundException
     {
         UserService userService = new UserServiceImpl();
 
         User userToCreate = new User("email@email.com", "blablabla", "User", "User", "user");
 
         userService.create(userToCreate);
+
+        System.out.println(userService.read(1));
 
 
 
