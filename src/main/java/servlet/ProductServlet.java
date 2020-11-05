@@ -85,6 +85,8 @@ public class ProductServlet extends HttpServlet {
 
         }
 
+// Видалення продукту по нажатті на кнопку Delete product під певним продуктом
+
         boolean delete = Boolean.parseBoolean((req.getParameter("delete")));
 
         if(delete==true){

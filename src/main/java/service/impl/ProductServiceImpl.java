@@ -7,58 +7,69 @@ import exception.AlreadyExistException;
 import exception.NotFoundException;
 import lombok.extern.log4j.Log4j;
 import model.Product;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import service.ProductService;
+import util.SessionFactoryUtil;
 
 import java.sql.SQLException;
 import java.util.List;
 @Log4j
 public class ProductServiceImpl implements ProductService {
 
+    Session session;
+
     private ProductDao productDao;
 
     public ProductServiceImpl(){
-        this.productDao = new ProductDaoImpl();
+        this.session = SessionFactoryUtil.createSession();
     }
 
+    @SuppressWarnings({"unchecket","JpaQlInspection"})
     @Override
     public List<Product> readAll() throws SQLException {
 
         log.info("Trying to get all product.");
-        return productDao.readAll();
+        return session.createQuery("SELECT u FROM Product u").list();
     }
 
     @Override
     public Product read(int id) throws SQLException, NotFoundException {
 
         log.info("Trying to get product.");
-        Product product = productDao.read(id);
-        if(product == null){
-            throw new NotFoundException("Product with id " + id + " doesn't exist.");
-        }
-        return product;
+        return session.get(Product.class, id);
     }
 
     @Override
     public void create(Product product) throws AlreadyExistException {
 
-        log.info("Trying to create produck.");
-        try {
-            productDao.create(product);
+        log.info("Trying to create product.");
 
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.persist(product);
+            transaction.commit();
         }
-        catch (SQLException e) {
-            log.error("Exception in SQL ", e);
+        catch (Exception e) {
+            transaction.rollback();
         }
+
+        log.info("New product with name : " + product.getName() + " was create.");
     }
 
     @Override
     public void delete(int id) throws SQLException, NotFoundException {
 
-//        if(!productDao.delete(id)){
-//            throw new NotFoundException("Produck with id " + id + " doesn't exist.");
-//        }
+        Transaction transaction = session.beginTransaction();
 
-        productDao.delete(id);
+        try{
+            Product product = this.read(id);
+            session.delete(product);
+            transaction.commit();
+        }
+        catch (Exception e){
+            transaction.rollback();
+        }
     }
 
     @Override
